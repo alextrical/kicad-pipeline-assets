@@ -613,7 +613,7 @@ definitions:
   # Schematic parameters =======================================================
 
   COLOR_THEME: Altium_Theme
-  SHEET_WKS: ${KIPRJMOD}/templates/Template_PCB_GIT_A4.kicad_wks
+  SHEET_WKS: ${KIPRJMOD}/kicad-pipeline-assets/templates/Template_PCB_GIT_A4.kicad_wks
   FAB_SCALING: 1
   ASSEMBLY_SCALING: 1
 
@@ -646,7 +646,7 @@ definitions:
   TESTPOINTS_DIR: '@TESTING_DIR@/Testpoints'
   IMAGES_DIR: Images
   3D_DIR: 3D
-  RESOURCES_DIR: kibot_resources
+  RESOURCES_DIR: kicad-pipeline-assets/assets
   REPORT_TEMPLATE_DIR: '@RESOURCES_DIR@/templates'
   SCRIPTS_DIR: '@RESOURCES_DIR@/scripts'
 
