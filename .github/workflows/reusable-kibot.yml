@@ -30,9 +30,11 @@ env:
   # CHECKED: will generate both schematic and PCB documents, with ERC/DRC
   # RELEASED: similar to CHECKED, automatically selected when pushing a tag to main
   # kibot_variant: DRAFT
+  kibot_variant: ${{ inputs.kibot_variant }}
 
   # Set the KiCad version to 10
   # kicad_version: 10
+  kicad_version: ${{ inputs.kicad_version }}
 
   kibot_log: kibot_run.log
  
