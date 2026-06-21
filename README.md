@@ -26,13 +26,13 @@ kicad-pipeline-assets provides a reusable toolkit for building consistent, autom
 As a Git submodule
 Add this repository to your project:
 ```bash
-git submodule add https://github.com/alextrical/kicad-pipeline-assets.git tools/kicad-pipeline-assets
+git submodule add https://github.com/alextrical/kicad-pipeline-assets.git kicad-pipeline-assets
 git submodule update --init --recursive
 ```
 Reference the provided KiBot pipelines from your project’s configuration:
 ```text
 import:
-  - tools/kicad-pipeline-assets/kibot/pipelines/fabrication.yml
+  - kicad-pipeline-assets/kibot/pipelines/fabrication.yml
 ```
 ### With GitHub Actions
 Use the reusable workflow:
