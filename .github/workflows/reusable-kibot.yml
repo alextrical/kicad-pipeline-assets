@@ -4,10 +4,20 @@ on:
   workflow_call:
     inputs:
       kibot_variant: 
-        description: Variant (DRAFT,PRELIMINARY,CHECKED,RELEASED)
+        description: |
+          DRAFT: only schematic in progress, will only generate schematic PDF, netlist and BoM
+          PRELIMINARY: will generate both schematic and PCB documents, but no ERC/DRC
+          CHECKED: will generate both schematic and PCB documents, with ERC/DRC
+          RELEASED: similar to CHECKED, automatically selected when pushing a tag to main
         required: false
         type: string
         default: DRAFT
+      kicad_version:
+        description: Set the KiCad version (8,9,or 10)
+        required: false
+        type: string
+        default: 10
+
     secrets:
       token:
         required: true
@@ -22,7 +32,7 @@ env:
   # kibot_variant: DRAFT
 
   # Set the KiCad version to 10
-  kicad_version: 10
+  # kicad_version: 10
 
   kibot_log: kibot_run.log
  
@@ -124,11 +134,7 @@ jobs:
           fi
 
           # Decide which group to use depending on kicad_version
-          if  (("${{ env.kicad_version }}" >= "9")) ; then
-            group_name="all_group_k${{ env.kicad_version }}"
-          else
-            group_name="all_group"
-          fi
+          group_name="all_group_k${{ env.kicad_version }}"
 
           # Determine additional_args based on the variant
           case "$kibot_variant" in

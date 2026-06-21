@@ -12,9 +12,9 @@ kicad-pipeline-assets provides a reusable toolkit for building consistent, autom
 ### Repository Structure
 * `.github/workflows/` — reusable GitHub Actions workflows
 * `.github/actions/` — composite actions for invoking KiBot pipelines
-* `kibot/pipelines/` — high-level output pipelines (fabrication, assembly, docs)
-* `kibot/filters/` — reusable filters (e.g. manufacturer-specific rules)
-* `kibot/preflight/` — validation steps such as ERC/DRC
+* `kibot_yaml/pipelines/` — high-level output pipelines (fabrication, assembly, docs)
+* `kibot_yaml/filters/` — reusable filters (e.g. manufacturer-specific rules)
+* `kibot_yaml/preflight/` — validation steps such as ERC/DRC
 * `templates/worksheets/` — KiCad drawing templates (.kicad_wks)
 * `templates/title_blocks/` — reusable title block components
 * `assets/` — fonts, color themes, and documentation templates
