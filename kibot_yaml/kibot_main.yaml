@@ -1,4 +1,4 @@
-# KiBot configuration file for Hierarchical Template
+# KiBot configuration file for KDT_Hierarchical Template
 # KiCad 8.0
 
 kibot:
@@ -50,6 +50,19 @@ variants:
 
 groups:
 
+  - name: all_group
+    outputs:
+      - @NETLIST_OUTPUT@
+      - bom
+      - 3d
+      - fab
+      - assembly
+      - @PDF_SCHEMATIC_OUTPUT@
+      - @MD_README_OUTPUT@
+      # - @HTML_KICANVAS_OUTPUT@ # Very experimental, we exclude it for now
+      - @HTML_KIRI_OUTPUT@
+      - @HTML_NAV_RES_OUTPUT@
+
   - name: all_group_k10
     outputs:
       - @NETLIST_OUTPUT@
@@ -76,19 +89,6 @@ groups:
       - @HTML_KIRI_OUTPUT@
       - @HTML_NAV_RES_OUTPUT@
 
-  - name: all_group_k8
-    outputs:
-      - @NETLIST_OUTPUT@
-      - bom
-      - 3d
-      - fab_k8
-      - assembly
-      - @PDF_SCHEMATIC_OUTPUT@
-      - @MD_README_OUTPUT@
-      # - @HTML_KICANVAS_OUTPUT@ # Very experimental, we exclude it for now
-      - @HTML_KIRI_OUTPUT@
-      - @HTML_NAV_RES_OUTPUT@
-
   - name: draft_group
     outputs:
       - @NETLIST_OUTPUT@
@@ -96,7 +96,7 @@ groups:
       - @CSV_BOM_OUTPUT@
       - @HTML_BOM_OUTPUT@
 
-  - name: fab_k8
+  - name: fab
     outputs:
       - tables
       - @GERBER_OUTPUT@
@@ -218,7 +218,7 @@ import:
   # Preflights =================================================================
 
   # Set text variables
-  - file: preflight/set_text_variables.yaml
+  - file: preflights/set_text_variables.yaml
     definitions:
       PROJECT_NAME: @PROJECT_NAME@
       BOARD_NAME: @BOARD_NAME@
@@ -229,24 +229,24 @@ import:
       ASSEMBLY_DIR: @ASSEMBLY_DIR@
 
   # Generate ERC Report
-  - file: preflight/erc_report.yaml
+  - file: preflights/erc_report.yaml
     definitions:
       DIR: @REPORT_DIR@
 
   # Generate DRC Report
-  - file: preflight/drc_report.yaml
+  - file: preflights/drc_report.yaml
     definitions:
       CHECK_ZONE_FILLS: @CHECK_ZONE_FILLS@
       DIR: @REPORT_DIR@
 
   # Draw stackup table in PCB. Needs gerber output
-  - file: preflight/draw_stackup.yaml
+  - file: preflights/draw_stackup.yaml
     definitions:
       GERBER_OUTPUT: @GERBER_OUTPUT@
       NOTE: @STACKUP_TABLE_NOTE@
 
   # Include tables in PCB for testpoint lists
-  # - file: preflight/include_table.yaml
+  # - file: preflights/include_table.yaml
   #   definitions:
   #     NAME_TP_TOP: @CSV_TP_TOP_OUTPUT@
   #     NAME_TP_BOTTOM: @CSV_TP_BOTTOM_OUTPUT@
@@ -587,7 +587,7 @@ definitions:
   COMPANY: Company Name
   DESIGNER: Author
 
-  LOGO: 'assets/logos/dummy_logo.png'
+  LOGO: 'kicad-pipeline-assets/logos/dummy_logo.png'
   GIT_URL: 'https://github.com/nguyen-v/KDT_Hierarchical_KiBot'
 
   # Preflight ==================================================================
@@ -646,8 +646,8 @@ definitions:
   TESTPOINTS_DIR: '@TESTING_DIR@/Testpoints'
   IMAGES_DIR: Images
   3D_DIR: 3D
-  RESOURCES_DIR: kicad-pipeline-assets/assets
-  REPORT_TEMPLATE_DIR: '@RESOURCES_DIR@/templates'
+  RESOURCES_DIR: kicad-pipeline-assets
+  REPORT_TEMPLATE_DIR: '@RESOURCES_DIR@/report_templates'
   SCRIPTS_DIR: '@RESOURCES_DIR@/scripts'
 
   # Layer names. Should match user-defined names in the PCB.  ==================

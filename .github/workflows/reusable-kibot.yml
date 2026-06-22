@@ -20,7 +20,7 @@ on:
       kibot_config:
         required: false
         type: string
-        default: kicad-pipeline-assets/kibot_yaml/main.yaml
+        default: kicad-pipeline-assets/kibot_yaml/kibot_main.yaml
 
     secrets:
       token:
